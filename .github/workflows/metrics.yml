@@ -2,8 +2,11 @@ name: Generate GitHub Metrics
 
 on:
   schedule:
-    - cron: "0 * * * *"  # Atualiza todo dia (pode mudar)
+    - cron: "0 * * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
