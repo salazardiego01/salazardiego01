@@ -1,0 +1,21 @@
+name: Generate GitHub Metrics
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Atualiza todo dia (pode mudar)
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Generate Metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: header, activity, community, repositories, metadata
+          config_timezone: America/Sao_Paulo
